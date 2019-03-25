@@ -73,7 +73,7 @@ Here is an example of a traffic sign image before and after grayscaling.
 
 ![alt text][image2]
 
-As a last step, I normalized the image data because it improve the results and also solve us so many problems and even speeding up convergence ...
+As the last step, I normalized the image data because it improves the results and also solve us so many problems and even speeding up convergence 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
