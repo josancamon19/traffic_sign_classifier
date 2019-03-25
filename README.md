@@ -3,11 +3,6 @@ Overview
 ---
 In this project, you will use what you've learned about deep neural networks and convolutional neural networks to classify traffic signs. You will train and validate a model so it can classify traffic sign images using the [German Traffic Sign Dataset](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset). After the model is trained, you will then try out your model on images of German traffic signs that you find on the web.
 
-To meet specifications, the project will require submitting three files: 
-* the Ipython notebook with the code
-* the code exported as an html file
-* a writeup report either as a markdown or pdf file 
-
 The Project
 ---
 The goals / steps of this project are the following:
@@ -18,20 +13,11 @@ The goals / steps of this project are the following:
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
 
-### Dataset and Repository
-
-1. Download the data set. The classroom has a link to the data set in the "Project Instructions" content. This is a pickled dataset in which we've already resized the images to 32x32. It contains a training, validation and test set.
-2. Clone the project, which contains the Ipython notebook and the writeup template.
-```sh
-git clone https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
-cd CarND-Traffic-Sign-Classifier-Project
-jupyter notebook Traffic_Sign_Classifier.ipynb
-```
-
+---
 
 # Results Report
 
-# **Traffic Sign Recognition** 
+## **Traffic Sign Recognition** 
 
 ---
 
@@ -74,32 +60,20 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
-
-![alt text][image1]
+Here is an exploratory visualization of the data set. refer to the [5th cell]() of the notebook  ...
 
 ### Design and Test a Model Architecture
 
-#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? 
 
-As a first step, I decided to convert the images to grayscale because ...
+As a first step, I decided to convert the images to grayscale because that requires a model with a lower complexity and in order to 
+get a first idea of the model based on the results...
 
 Here is an example of a traffic sign image before and after grayscaling.
 
 ![alt text][image2]
 
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
+As a last step, I normalized the image data because it improve the results and also solve us so many problems and even speeding up convergence ...
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
@@ -120,7 +94,6 @@ My final model consisted of the following layers:
 | Fully connected		| 512 x 128 shape        									|
 | RELU					|												|
 | Fully connected		| 128 x 43 shape        									|
-|						|												|
  
 
 
@@ -128,20 +101,17 @@ My final model consisted of the following layers:
 
 To train the model, I used an ....
 
-#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy.
 
 My final model results were:
 * validation set accuracy of 0.950
 * test set accuracy of 0.932
 
-If an iterative approach was chosen:
+Architecture approach:
 
 The first architecture I tried was LeNet, just changing the input and output size and processing the images to grayscale, I chose it just for test but the results was no great, then I tried adding more conv layers, tried reducing fc layers and even adding batchnorm layers (was so weird don't see any improvement with those) but the results was worse than the first one, finally I decided to tune the initial LeNet, adding, reducing the number of nodes in each layer in order to be able to catch more in each image, changing the depth and in this way was how I finally found a decent model. 
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+Finally then of the training with the train set, the model with completely new images (test_set) achieved an accuracy of 93.2% and with some images extracted independently from internet achieved an accuracy of 82%, with the good result with new images we verified that our model is a good modedl and performs well.
  
 ### Test a Model on New Images
 
@@ -156,7 +126,7 @@ Some images might was difficult to classify due to the quality of the photos but
 
 Obviously, in a real approach image augmentation is essential.
 
-#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set.
 
 Here are the results of the prediction:
 
@@ -168,10 +138,9 @@ Here are the results of the prediction:
 | Traffic Signals      		| Traffic Signals					 				|
 | General Caution			| General Caution      							|
 
-
 The model was able to correctly guess 9 of the 11 traffic signs, which gives an accuracy of 82%. This seems not favorably relating to the accuracy on the test set of 93.2%
 
-#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. 
 
 For the first image, the model is pretty sure that this is a stop sign (probability of 0.99961), and the image does contain a stop sign. The top five soft max probabilities were
 
